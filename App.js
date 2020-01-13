@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  Button
 } from 'react-native';
 
 import {
@@ -23,6 +24,13 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import axios from 'axios';
+
+const getData = async () => {
+  const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+  alert(JSON.stringify(response.data));
+}
 
 const App: () => React$Node = () => {
   return (
@@ -38,6 +46,7 @@ const App: () => React$Node = () => {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
+          <Button title="Get Data" onPress={getData} ></Button>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
